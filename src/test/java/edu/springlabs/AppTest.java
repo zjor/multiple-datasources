@@ -27,14 +27,14 @@ public class AppTest {
     @Transactional("coreTransactionManager")
     public void shouldCreateAndFetchUsers() {
         String id = userService.create(new User()).getId();
-        Assert.assertTrue(userService.findAll(User.class).stream().filter(u -> u.getId().equals(id)).count() > 0);
+        Assert.assertTrue(userService.findAll().stream().filter(u -> u.getId().equals(id)).count() > 0);
     }
 
     @Test
     @Transactional("productTransactionManager")
     public void shouldCreateAndFetchProducts() {
         String id = productService.create(new Product("Acme Product")).getId();
-        Assert.assertTrue(productService.findAll(Product.class).stream().filter(p -> p.getId().equals(id)).count() > 0);
+        Assert.assertTrue(productService.findAll().stream().filter(p -> p.getId().equals(id)).count() > 0);
     }
 
 }
